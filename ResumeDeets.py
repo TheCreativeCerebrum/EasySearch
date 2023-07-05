@@ -1,4 +1,6 @@
 import re
+import random
+import joblib
 
 def get_contact_info(first_name, last_name, phone_number, email, address, linkedin_url):
   """Returns a dictionary of contact information."""
