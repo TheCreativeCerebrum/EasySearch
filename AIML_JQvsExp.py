@@ -94,7 +94,7 @@ def main():
     "core_competencies": core_competencies,
     "education": education,
     "work_experience": work_experience,
-    "job_query_controls" job_query_controls,
+    "job_query_controls": job_query_controls,
   }
 
   model = joblib.load("model.pkl")
