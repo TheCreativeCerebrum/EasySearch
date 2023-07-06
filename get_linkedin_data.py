@@ -1,8 +1,18 @@
+# file: get_linkedin_data.py
+
 import requests
 import bs4
 
-def get_linkedin_data(linkedin_url, salary, benefits, years_of_experience):
+def get_linkedin_data(linkedin_url):
   """Returns a dictionary of data from the LinkedIn URL."""
+
+  salary = input("Enter your desired salary: ")
+  benefits = input("Enter your desired benefits: ")
+  years_of_experience = input("Enter your desired years of experience: ")
+
+  # Get the LinkedIn URL from the user.
+
+  linkedin_url = input("Enter your LinkedIn URL: ")
 
   response = requests.get(linkedin_url)
   soup = bs4.BeautifulSoup(response.content, "html.parser")
@@ -57,19 +67,11 @@ def get_linkedin_data(linkedin_url, salary, benefits, years_of_experience):
         "work_experience": work_experience,
     })
 
-  # Set job query controls.
-
+  salary = input("Enter your desired salary: ")
+  benefits = input("Enter your desired benefits: ")
+  years_of_experience = input("Enter your desired years of experience: ")
   data["salary"] = salary
   data["benefits"] = benefits
   data["years_of_experience"] = years_of_experience
 
   return data
-
-
-if __name__ == "__main__":
-  linkedin_url = "https://www.linkedin.com/in/johndoe/"
-  salary = 100000
-  benefits = "Health insurance, dental insurance, vision insurance, 401k, paid time off"
-  years_of_experience = 5
-  data = get_linkedin_data(linkedin_url, salary, benefits, years_of_experience)
-  print(data)
