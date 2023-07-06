@@ -52,8 +52,9 @@ def get_linkedin_data(linkedin_url):
 
   # Get professional summary.
 
-  professional_summary = soup.find("h1", class_="pv-profile-top-card__headline").text
-  data["professional_summary"] = professional_summary
+  headline = soup.find("h1", class_="pv-profile-top-card__headline").text
+  data["headline"] = headline
+
 
 
   # Get core competencies.
