@@ -5,16 +5,19 @@ import main
 import json
 
 with open("test_data.json", "r") as f:
-  data = json.load(f)
+    data = json.load(f)
+
 
 def test_get_linkedin_data():
-  assert get_linkedin_data.get_data_from_json(data) == data
+    assert get_linkedin_data.get_data_from_json(data) == data
+
 
 def test_apply_to_easy_apply():
-  assert apply_to_easy_apply.apply_to_easy_apply(data) == True
+    assert apply_to_easy_apply.apply_to_easy_apply(data) == True
+
 
 def test_main():
-  assert main.main(data) == True
+    assert main.main(data) == True
 
 # def test_get_linkedin_data_with_input():
 #   """Tests the get_linkedin_data() function with input values."""

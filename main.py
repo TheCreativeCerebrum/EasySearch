@@ -9,8 +9,8 @@ data = get_linkedin_data.get_linkedin_data(linkedin_url)
 
 # Create the file data.json if it does not exist.
 if not os.path.exists("data.json"):
-  with open("data.json", "w") as f:
-    json.dump({}, f)
+    with open("data.json", "w") as f:
+        json.dump({}, f)
 
 # Search for Easy Apply jobs.
 search_query_controls = {
@@ -18,7 +18,8 @@ search_query_controls = {
     "location": "San Antonio",
 }
 
-jobs = apply_to_easy_apply_jobs.search_easy_apply_jobs(search_query_controls, data)
+jobs = apply_to_easy_apply_jobs.search_easy_apply_jobs(
+    search_query_controls, data)
 
 # Apply to the Easy Apply jobs.
 success_count = apply_to_easy_apply_jobs.apply_to_easy_apply_jobs(jobs)

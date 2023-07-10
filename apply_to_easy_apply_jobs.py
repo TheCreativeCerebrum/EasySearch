@@ -10,11 +10,11 @@ def search_easy_apply_jobs(search_query_controls, data):
   """Searches for Easy Apply jobs that meet the given query controls and data.
 
   Args:
-    search_query_controls: The query controls to use for the search.
-    data: The data to use for the search.
+	search_query_controls: The query controls to use for the search.
+	data: The data to use for the search.
 
   Returns:
-    A list of Easy Apply jobs that meet the given criteria.
+	A list of Easy Apply jobs that meet the given criteria.
   """
 
   url = "https://www.linkedin.com/jobs/search/?easy_apply=true"
@@ -23,18 +23,18 @@ def search_easy_apply_jobs(search_query_controls, data):
 
   response = requests.post(url, headers=headers, data=data)
   if response.status_code == 200:
-    return json.loads(response.content)["results"]
+	  return json.loads(response.content)["results"]
   else:
-    return []
+	  return []
 
 def apply_to_easy_apply_jobs(jobs):
   """Applies to the given Easy Apply jobs.
 
-  Args:
-    jobs: The Easy Apply jobs to apply to.
+  Args:S
+	jobs: The Easy Apply jobs to apply to.
 
   Returns:
-    The number of jobs that were applied to successfully.
+	The number of jobs that were applied to successfully.
   """
 
   success_count = 0
@@ -48,17 +48,33 @@ def apply_to_easy_apply_jobs(jobs):
 
   return success_count
 
+
 if __name__ == "__main__":
   with open("get_linkedin_data.py") as f:
     data = json.load(f)
 
   search_query_controls = {
-    "keywords": "Engineer Manager",
-    "location": "San Antonio",
+	"keywords": "Engineer Manager",
+	"location": "San Antonio",
   }
 
   jobs = search_easy_apply_jobs(search_query_controls, data)
 
   success_count = apply_to_easy_apply_jobs(jobs)
 
-  print("Successfully applied to {} jobs.".format(success_count))
+#   print("Successfully applied to {} jobs.".format(success_count))
+def print_job_application_status(success_count):
+  """Prints the job application status.
+
+  Args:
+	success_count: The number of jobs that were successfully applied to.
+  """
+
+  if success_count > 0:
+    print("Successfully applied to {} jobs.".format(success_count))
+  else:
+    print("No jobs were applied to.")
+
+if __name__ == "__main__":
+  success_count = 1
+  print_job_application_status(success_count)
