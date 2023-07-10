@@ -35,23 +35,19 @@ def get_linkedin_data(linkedin_url):
 
 
   tblack = soup.find("tblack", class_="text-body-small inline t-black--light break-words")
-    phone_number = soup.find("tblack", class_="t-14 t-black t-normal")
+  phone_number = soup.find("tblack", class_="t-14 t-black t-normal")
   # if phone_number is None:
   #   phone_number = input("Enter your phone number: ")
   #   data["phone_number"] = phone_number
 
-  email = soup.find("a", class_="app-aware-link fb-navigation-button artdeco-button artdeco-button--tertiary artdeco-button--icon-right").find("span", class_="fb-navigation-button__text artdeco-button__text").text
-  # email = soup.find("li", class_="pv-contact-info__email")
+  pv = soup.find("a", class_="pv-contact-info__contact-link link-without-visited-state t-14")
+  email = soup.find("pv", class_="pv-contact-info__ci-container t-14")
   # if email is None:
   #   email = input("Enter your email address: ")
   #   data["email"] = email
 
-  postal_code = soup.find("input", class_=" artdeco-text-input--input").text
-  city = soup.find("select", id="text-entity-list-form-component-profileEditFormElement-TOP-CARD-profile-ACoAABDT5FYBjGZ3Uy8bJ2NS7huQIaJCYPn-Wu8-geoLocation-cityTextEntityListField").find("option", selected=True).text
-  address = {
-    "postal_code": postal_code,
-    "city": city,
-  }
+  tlight = soup.find("tlight", class_="text-body-small inline t-black--light break-words")
+  address = soup.find("tlight", class_="pv-text-details__left-panel mt2")
 # Manual enter of address
   # address = soup.find("li", class_="pv-contact-info__address")
   # if address is None:
@@ -116,7 +112,7 @@ def get_linkedin_data(linkedin_url):
 
   return data
 
-  def save_data_as_json(data):
+def save_data_as_json(data):
   """Saves the data as a JSON file.
 
   Args:
