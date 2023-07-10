@@ -1,0 +1,106 @@
+def test_get_data_from_json():
+  """Tests the get_data_from_json() function."""
+  data = get_data_from_json("test_data.json")
+  assert data["name"] == "Shea Dahl"
+  assert data["email"] == "SheaDahl85@gmail.com"
+  assert data["phone"] == "(210)772-4306"
+  assert data["address"] == "Adkins, TX 78101"
+  assert data["linkedin_url"] == "https://www.linkedin.com/in/sheadahl/"
+  assert data["salary"] == "$200,000"
+  assert data["benefits"] == ["Health insurance", "Dental insurance", "Vision insurance", "401K"]
+  assert data["years_of_experience"] == "10"
+  assert data["summary"] == "Technology leader with experience across product development, engineering, architecture, throughout all stages of SDLC and different geographies in a multi-vendor environment. Strategic thinker, decisive leader and collaborative partner with strong communication, alignment, and relationship skills, enabling teams to deliver initiatives that fuel growth and innovation."
+  assert data["skills"] == [
+      "Product Development and Execution",
+      "Architecture",
+      "Design",
+      "Quality Assurance",
+      "Support",
+      "Planning and/or Forecasting and Budgeting",
+      "Business problem identification",
+      "process development",
+      "strategic planning",
+      "Agile transformation using various methodologies: Scrum, Kanban and Scrumban",
+      "Excellent all-round communicator, adept at working with end users, vendors and C level stakeholders.",
+      "Big Data,Cloud, Hadoop, Spark, Kafka, Hive, MongoDB, Snowflake, IBM, AWS, MS Azure, Tableau, Elasticsearch, Splunk.",
+      "Oracle, SQL, NoSQL, Python, Javascript, Java, React/Redux, Swift, SOAP, GraphQL, Microservices, Jupyter Notebook, Git, Docker, Unix."
+  ]
+  assert data["education"] == [
+      {
+        "degree": "Master of Science in Information Technology",
+        "concentration": "Technology Management",
+        "school": "Southern New Hampshire University",
+        "year_graduated": "March 2020"
+      },
+      {
+        "degree": "Bachelor of Science in Business Studies",
+        "concentration": "Computer Information Technology",
+        "school": "Southern New Hampshire University",
+        "year_graduated": "Dec 2017"
+      }
+  ]
+  assert data["experience"] == [
+      {
+        "companyName": "Ernst & Young",
+        "start_date": "Feb 2021",
+        "end_date": "Current",
+        "title": "Technical Engineer Manager",
+        "description": "Architected scalable and robust solutions, ensuring optimal performance, security, and maintainability for a $1 billion dollar company. Led by example, and mentored teams to foster a culture of open and transparent communication. In less than 3 months the program underwent a transformation where innovation and IT Best Practices began thriving.
+        Prioritized engineering and architecture time minimizes participation in unnecessary meetings. This increased productivity and innovation across 30 teams leading to a 55% decrease of bugs.
+        Provide technical guidance and mentorship to team members, fostering professional growth and improving overall technical expertise.
+        Manage infrastructure and platform enhancements, leveraging cloud-based technologies to optimize system performance and reliability."
+      },
+      {
+        "companyName": "United Masters",
+        "start_date": "Aug 2021",
+        "end_date": "Nov 2021",
+        "title": "Technical Engineer Manager",
+        "description": "Spearheaded efforts to develop and implement an integrated plan by partnering with management and teams to assess and prioritize business needs with development work to deliver a $550 million dollar product.
+        Enacted software project controls to include team data and acceptance criteria, this helped businesses better prioritize bugs that met at-risk release deadlines.
+        Effectively spearheaded and enhanced change management initiatives of varying scope and complexity, resulting in streamlined processes and improved outcomes.
+        Demonstrated proficiency in managing organizational change, applying strategic methodologies to facilitate seamless transitions and drive successful implementation of initiatives.
+        Drove the establishment of a collaborative and aligned environment to foster seamless cross-functional cooperation.
+        Successfully executed initiatives that facilitated effective teamwork, breaking down silos and promoting synergistic efforts across diverse functions.
+        Created an inclusive and collaborative atmosphere conducive to shared goals and enhanced productivity."
+      },
+      {
+        "companyName": "USAA FEDERAL SAVINGS BANK",
+        "start_date": "Jun 2017",
+        "end_date": "Aug 2021",
+        "title": "Senior Development Engineer",
+        "description": "Developed  a data & analytics integrated plan partnering with stakeholders to assess and prioritize business needs utilizing quantitative data to drive decision-makers to increase net income for $3.3 billion.
+        Conducted competitive analysis to identify opportunities for innovation in the organization’s invested adherence to compliance and regulation in alignment with data and analytics efforts.
+        Resolved conflicts between competing interests within the organization or among executive leadership by fostering collaborative relationships.
+        Identified key performance indicators to measure success of existing products and technologies and inform future direction for each of the 15 organizations.
+        Provided guidance on best practices for data and analytics, infrastructure and technology that adhered to company standards."
+      },
+      {
+        "companyName": "Sonic Corporate",                                                                            
+        "start_date": "May 2016",
+        "end_date": "May 2017",
+        "title": "Lead Project Manager",
+        "description": "Led the successful launch of the revolutionary first Mobile Order Ahead application for beta testing on time which generated an increase in sales of 12% for a $500 million brand.
+        Identified potential areas of improvement across the organization’s project management process mitigating the duplicated work effort.
+        Encouraged innovation and quality assurance protocols across teams to improve efficiency and reduce scope creep.
+        Managed over 40 vendor relationships by negotiating contracts, managing SLAs, monitoring performance metrics."
+      },
+      {
+        "companyName": "Logic Energy Solutions",                                                                            
+        "start_date": "May 2015 ",
+        "end_date": "May 2016",
+        "title": "Database Administrator",
+        "description": "Collaborated with other IT teams on projects involving the use of databases or application integration with noSQL databases.
+        Implemented efficient data models, optimized performance, and ensured data integrity, contributing to enhanced operational efficiency and informed decision-making."
+      },
+      {
+        "companyName": "Hertz ",                                                                            
+        "start_date": "Mar 2015",
+        "end_date": "May 2015",
+        "title": "Business Analyst Intern",
+        "description": "Analyzed business documents, processes, systems to assess the business model and integration with technology.
+        Reduced critical business process from 30 days down to 1 day after reengineering the process.
+        Researched emerging technologies that could improve the organization’s capabilities.
+        Collaborated closely with subject matter experts to understand complex business processes."
+      } 
+    ]
+    

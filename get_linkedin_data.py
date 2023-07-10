@@ -8,10 +8,6 @@ import os
 def get_linkedin_data(linkedin_url):
   """Returns a dictionary of data from the LinkedIn URL."""
 
-  salary = input("Enter your desired salary: ")
-  benefits = input("Enter your desired benefits: ")
-  years_of_experience = input("Enter your desired years of experience: ")
-
   # Get the LinkedIn URL from the user.
 
   linkedin_url = input("Enter your LinkedIn URL: ")
@@ -68,9 +64,10 @@ def get_linkedin_data(linkedin_url):
   data["skills"] = [
       skill.text for skill in soup.find_all("li", class_="pv-skills-section__skill-item")
   ]
+# each skills is in "liClass", class_="artdeco-list__item pvs-list__item--line-separated pvs-list__item--one-column"
 
   # Get education.
-
+    #Dates in "dateClass", class_= "block data-test-date-dropdown__dropdowns="" class="display-flex"
   data["education"] = []
   for education_item in soup.find_all("div", class_="pv-education-summary__item"):
     school = education_item.find("h3", class_="pv-education-summary__school").text
@@ -80,6 +77,7 @@ def get_linkedin_data(linkedin_url):
     data["education"].append({
         "school": school,
         "degree": degree,
+        "fieldOfStudy": fieldOfStudy,
         "concentration": concentration,
         "year_graduated": year_graduated,
     })

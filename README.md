@@ -33,7 +33,8 @@ The dictionary is then used to find jobs that use Job Query Controls against Wor
 3. Enter the requested information when prompted.
 4. The code will print the results of the search to the console.
 5. To use inputted data to apply to "Easy Apply" run command, "python apply_to_easy_apply_jobs.py"
-6. To test the code from the command line type," python -m unittest test_get_linkedin_data.py"
+6. To test the code from the command line type, "python test_with_input.py"
+<!-- "python -m unittest test_get_linkedin_data.py" -->
 
 ## Requirements
 
