@@ -118,10 +118,13 @@ def save_data_as_json(data):
     data: The data to be saved.
   """
 
-if not os.path.exists("data.json"):
-  with open("data.json", "w") as f:
-    json.dump({}, f)
+  if not os.path.exists("data.json"):
+    with open("data.json", "w+") as f:
+      json.dump({}, f)
 
-  if __name__ == "__main__":
-    data = get_linkedin_data()
-    save_data_as_json(data)
+  with open("data.json", "w+") as f:
+    json.dump(data, f)
+
+if __name__ == "__main__":
+  data = get_linkedin_data()
+  save_data_as_json(data)
