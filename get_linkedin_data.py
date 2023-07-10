@@ -26,36 +26,44 @@ def get_linkedin_data(linkedin_url):
 
   # Get personal contact information.
 
-  full_name = soup.find("span", class_="full-name").text
-  if full_name is None:
-    full_name = input("Enter your full name: ")
-    data["full_name"] = full_name.split(" ")[0]
-    data["last_name"] = full_name.split(" ")[1]
-  else:
-    data["full_name"] = full_name.split(" ")[0]
-    data["last_name"] = full_name.split(" ")[1]
+  full_name = soup.find("h1", class_="text-heading-xlarge inline t-24 v-align-middle break-words")
+  if full_name is not None:
+    full_name = full_name.text
+  # else:
+  #   full_name = input("Enter your full name: ")
 
-  phone_number = soup.find("li", class_="pv-contact-info__phone")
-  if phone_number is None:
-    phone_number = input("Enter your phone number: ")
-    data["phone_number"] = phone_number
 
-  email = soup.find("li", class_="pv-contact-info__email")
-  if email is None:
-    email = input("Enter your email address: ")
-    data["email"] = email
+  tblack = soup.find("tblack", class_="text-body-small inline t-black--light break-words")
+    phone_number = soup.find("tblack", class_="t-14 t-black t-normal")
+  # if phone_number is None:
+  #   phone_number = input("Enter your phone number: ")
+  #   data["phone_number"] = phone_number
 
-  address = soup.find("li", class_="pv-contact-info__address")
-  if address is None:
-    address = input("Enter your address: ")
-    data["address"] = address
+  email = soup.find("a", class_="app-aware-link fb-navigation-button artdeco-button artdeco-button--tertiary artdeco-button--icon-right").find("span", class_="fb-navigation-button__text artdeco-button__text").text
+  # email = soup.find("li", class_="pv-contact-info__email")
+  # if email is None:
+  #   email = input("Enter your email address: ")
+  #   data["email"] = email
+
+  postal_code = soup.find("input", class_=" artdeco-text-input--input").text
+  city = soup.find("select", id="text-entity-list-form-component-profileEditFormElement-TOP-CARD-profile-ACoAABDT5FYBjGZ3Uy8bJ2NS7huQIaJCYPn-Wu8-geoLocation-cityTextEntityListField").find("option", selected=True).text
+  address = {
+    "postal_code": postal_code,
+    "city": city,
+  }
+# Manual enter of address
+  # address = soup.find("li", class_="pv-contact-info__address")
+  # if address is None:
+  #   address = input("Enter your address: ")
+  #   data["address"] = address
 
   # Get professional summary.
 
-  headline = soup.find("h1", class_="pv-profile-top-card__headline").text
-  data["headline"] = headline
-
-
+  headline = soup.find("h2", class_="pv-profile-top-card__headline")
+  if headline is not None:
+    headline = headline.text
+  # else:
+  #   headline = None
 
   # Get core competencies.
 
