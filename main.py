@@ -1,4 +1,4 @@
-# file: EasySearch.py
+# file: main.py
 
 import get_linkedin_data
 

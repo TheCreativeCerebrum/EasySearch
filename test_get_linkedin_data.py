@@ -13,10 +13,10 @@ class TestGetLinkedInData(unittest.TestCase):
     self.assertIn("phone_number", data)
     self.assertIn("email", data)
     self.assertIn("address", data)
-    self.assertIn("professional_summary", data)
-    self.assertIn("core_competencies", data)
+    self.assertIn("headline", data)
+    self.assertIn("skills", data)
     self.assertIn("education", data)
-    self.assertIn("work_experience", data)
+    self.assertIn("experience", data)
 
   def test_get_linkedin_data_with_invalid_url(self):
     with self.assertRaises(ValueError):
