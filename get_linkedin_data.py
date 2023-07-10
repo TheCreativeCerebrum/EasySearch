@@ -3,6 +3,7 @@
 import requests
 import bs4
 import json
+import os
 
 def get_linkedin_data(linkedin_url):
   """Returns a dictionary of data from the LinkedIn URL."""
@@ -62,7 +63,7 @@ def get_linkedin_data(linkedin_url):
   # else:
   #   headline = None
 
-  # Get core competencies.
+  # Get core competencies
 
   data["skills"] = [
       skill.text for skill in soup.find_all("li", class_="pv-skills-section__skill-item")
@@ -101,7 +102,7 @@ def get_linkedin_data(linkedin_url):
     })
 
 
-#get Query controls
+#get query_controls
 
   salary = input("Enter your desired salary: ")
   benefits = input("Enter your desired benefits: ")
@@ -119,8 +120,9 @@ def save_data_as_json(data):
     data: The data to be saved.
   """
 
+if not os.path.exists("data.json"):
   with open("data.json", "w") as f:
-    json.dump(data, f)
+    json.dump({}, f)
 
   if __name__ == "__main__":
     data = get_linkedin_data()

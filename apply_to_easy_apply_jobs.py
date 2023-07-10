@@ -6,11 +6,11 @@ import json
 with open("data.json", "r") as f:
   data = json.load(f)
 
-def search_easy_apply_jobs(query_controls, data):
+def search_easy_apply_jobs(search_query_controls, data):
   """Searches for Easy Apply jobs that meet the given query controls and data.
 
   Args:
-    query_controls: The query controls to use for the search.
+    search_query_controls: The query controls to use for the search.
     data: The data to use for the search.
 
   Returns:
@@ -19,7 +19,7 @@ def search_easy_apply_jobs(query_controls, data):
 
   url = "https://www.linkedin.com/jobs/search/?easy_apply=true"
   headers = {"Content-Type": "application/json"}
-  data = json.dumps({"queryControls": query_controls, "data": data})
+  data = json.dumps({"searchQueryControls": search_query_controls, "data": data})
 
   response = requests.post(url, headers=headers, data=data)
   if response.status_code == 200:
@@ -52,12 +52,12 @@ if __name__ == "__main__":
   with open("get_linkedin_data.py") as f:
     data = json.load(f)
 
-  query_controls = {
-    "keywords": "software engineer",
-    "location": "San Francisco",
+  search_query_controls = {
+    "keywords": "Engineer Manager",
+    "location": "San Antonio",
   }
 
-  jobs = search_easy_apply_jobs(query_controls, data)
+  jobs = search_easy_apply_jobs(search_query_controls, data)
 
   success_count = apply_to_easy_apply_jobs(jobs)
 
