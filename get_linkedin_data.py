@@ -2,6 +2,7 @@
 
 import requests
 import bs4
+import json
 
 def get_linkedin_data(linkedin_url):
   """Returns a dictionary of data from the LinkedIn URL."""
@@ -114,3 +115,17 @@ def get_linkedin_data(linkedin_url):
   data["years_of_experience"] = years_of_experience
 
   return data
+
+  def save_data_as_json(data):
+  """Saves the data as a JSON file.
+
+  Args:
+    data: The data to be saved.
+  """
+
+  with open("data.json", "w") as f:
+    json.dump(data, f)
+
+  if __name__ == "__main__":
+    data = get_linkedin_data()
+    save_data_as_json(data)

@@ -1,6 +1,9 @@
 import requests
 import json
 
+with open("data.json", "r") as f:
+  data = json.load(f)
+  
 def search_easy_apply_jobs(query_controls, data):
   """Searches for Easy Apply jobs that meet the given query controls and data.
 
