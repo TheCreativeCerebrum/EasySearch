@@ -36,8 +36,8 @@ def get_linkedin_data(linkedin_url):
     if full_name is not None:
         full_name = full_name.text
         logger.info("Found full name: %s", full_name)
-    # else:
-    #   full_name = input("Enter your full name: ")
+    else:
+      full_name = input("Enter your full name: ")
 
     # Phone
     tblack = soup.find(
@@ -46,8 +46,8 @@ def get_linkedin_data(linkedin_url):
     if phone_number is not None:
         phone_number = phone_number.text
         logger.info("Found phone number: %s", phone_number)
-	# else:
-    #     phone_number = input("Enter your phone number: ")
+    else:
+      phone_number = input("Enter your phone number: ")
 
 
     # email
@@ -57,8 +57,8 @@ def get_linkedin_data(linkedin_url):
     if email is not None:
         email = email.text
         logger.info("Found email address: %s", email)
-	# else
-    #   email = input("Enter your email address: ")
+    else:
+      email = input("Enter your email address: ")
 
 
     # address
@@ -68,8 +68,8 @@ def get_linkedin_data(linkedin_url):
     if address is not None:
         address = address.text
         logger.info("Found address: %", address)
-	# else:
-	#   address = input("Enter your preferred location")
+    else:
+      address = input("Enter your preferred location:")
 
     # Get professional summary:
 
