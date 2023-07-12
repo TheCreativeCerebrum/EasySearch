@@ -4,14 +4,17 @@ import requests
 import bs4
 import json
 import os
+import logging
 
+
+    logger = logging.getLogger(__name__)
 
 def get_linkedin_data(linkedin_url):
     """Returns a dictionary of data from the LinkedIn URL."""
 
-	logger = logging.getLogger(__name__)
-    # Get the LinkedIn URL from the user.
+    logger.info("Getting data from LinkedIn URL: %s", linkedin_url)
 
+    # Get the LinkedIn URL from the user.
     linkedin_url = input("Enter your LinkedIn URL: ")
 
     response = requests.get(linkedin_url)
@@ -22,53 +25,64 @@ def get_linkedin_data(linkedin_url):
     # Check if the soup object is None.
 
     if soup is None:
+        logger.error("Invalid LinkedIn URL")
         raise ValueError("Invalid LinkedIn URL")
 
-    # Get personal contact information.
+    # Get personal contact information:
 
+    # Name
     full_name = soup.find(
         "h1", class_="text-heading-xlarge inline t-24 v-align-middle break-words")
     if full_name is not None:
         full_name = full_name.text
+        logger.info("Found full name: %s", full_name)
     # else:
     #   full_name = input("Enter your full name: ")
 
+    # Phone
     tblack = soup.find(
         "tblack", class_="text-body-small inline t-black--light break-words")
     phone_number = soup.find("tblack", class_="t-14 t-black t-normal")
-    # if phone_number is None:
-    #   phone_number = input("Enter your phone number: ")
+    if phone_number is None:
+        phone_number = phone_number.text
+        logger.info("Found phone number: %s", phone_number)
+	else:
+        phone_number = input("Enter your phone number: ")
     #   data["phone_number"] = phone_number
 
+    # email
     pv = soup.find(
         "a", class_="pv-contact-info__contact-link link-without-visited-state t-14")
     email = soup.find("pv", class_="pv-contact-info__ci-container t-14")
-    # if email is None:
-    #   email = input("Enter your email address: ")
+    if email is None:
+		email = email.text
+        logger.info("Found email address: %s", email)
+	else
+      email = input("Enter your email address: ")
     #   data["email"] = email
 
+    # address
     tlight = soup.find(
         "tlight", class_="text-body-small inline t-black--light break-words")
     address = soup.find("tlight", class_="pv-text-details__left-panel mt2")
-# Manual enter of address
-    # address = soup.find("li", class_="pv-contact-info__address")
-    # if address is None:
-    #   address = input("Enter your address: ")
-    #   data["address"] = address
+	# Need to add in old if/else command
 
-    # Get professional summary.
+    # Get professional summary:
 
+    # LinkedIn headline
     headline = soup.find("h2", class_="pv-profile-top-card__headline")
     if headline is not None:
         headline = headline.text
-    # else:
-    #   headline = None
+        logger.info("Found professional summary: %s", headline)
+    else:
+      headline = None
 
     # Get core competencies
 
     data["skills"] = [
         skill.text for skill in soup.find_all("li", class_="pv-skills-section__skill-item")
     ]
+    logger.info("Found skills: %s", data["skills"])
 # each skills is in "liClass", class_="artdeco-list__item pvs-list__item--line-separated pvs-list__item--one-column"
 
     # Get education.
@@ -90,6 +104,7 @@ def get_linkedin_data(linkedin_url):
             "concentration": concentration,
             "year_graduated": year_graduated,
         })
+        logger.info("Found education: %s", data["education"])
 
     # Get work experience.
 
@@ -112,6 +127,7 @@ def get_linkedin_data(linkedin_url):
             "end_date": end_date,
             "description": description,
         })
+        logger.info("Found work experience: %s", data["experience"])
 
 
 # get query_controls
@@ -122,9 +138,10 @@ def get_linkedin_data(linkedin_url):
     data["salary"] = salary
     data["benefits"] = benefits
     data["years_of_experience"] = years_of_experience
+    logger.info("Successfully scraped data from LinkedIn profile")
 
     return data
-	print("Successfully scraped " data " from your LinkedIn profile")
+    print("Successfully scraped ", data, " from your LinkedIn profile")
 
 
 def save_data_as_json(data):
