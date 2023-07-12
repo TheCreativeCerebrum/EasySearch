@@ -9,11 +9,14 @@ Python must be installed locally; Click [here](https://www.python.org/downloads/
 
 This code takes inputted values from the user and then creates a dictionary of the 6 categories:
 
-* Contact information
-* Professional summary
-* Core competencies
+* Full Name
+* Contact Info
+* LinkedIn Headline
+* Experience
 * Education
-* Work experience
+<!-- * Licenses & certifications -->
+<!-- * Volunteering -->
+* Skills
 * Job query controls
 
 The dictionary is then used to find jobs that use Job Query Controls against Work Experience.
@@ -22,9 +25,20 @@ The dictionary is then used to find jobs that use Job Query Controls against Wor
 
 1. Save the code as a Python file.
 2. Run the code from the command line with, "python main.py"
-3. Enter the requested information when prompted.
-4. The code will print the results of the search to the console.
-5. To test the code from the command line type," python -m unittest test_get_linkedin_data.py"
+3. Enter the requested information when prompted:
+LinkedIn Profile Link:
+   a. https://www.linkedin.com/in/inesmontani/
+Personal Information:
+   a. FName LName
+   b. (000)000-0000
+   c. email@email.com
+Search Query Parameters:
+   a. San Antonio, TX
+   b. $160,000+
+   c. 401(k), Medical, Dental, Vision
+   d. 10
+4. This code will print the results of the search to the console and should save it as data.json file.
+5. To test the code from the command line type, "python test_with_input.py"
 
 ## Requirements
 
