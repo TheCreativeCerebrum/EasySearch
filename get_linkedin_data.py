@@ -38,6 +38,7 @@ def get_linkedin_data(linkedin_url):
         logger.info("Found full name: %s", full_name)
     else:
       full_name = input("Enter your full name: ")
+      print(full_name)
 
     # Phone
     tblack = soup.find(
@@ -48,6 +49,7 @@ def get_linkedin_data(linkedin_url):
         logger.info("Found phone number: %s", phone_number)
     else:
       phone_number = input("Enter your phone number: ")
+      print(phone_number)
 
 
     # email
@@ -59,6 +61,7 @@ def get_linkedin_data(linkedin_url):
         logger.info("Found email address: %s", email)
     else:
       email = input("Enter your email address: ")
+      print(email)
 
 
     # address
@@ -67,9 +70,10 @@ def get_linkedin_data(linkedin_url):
     address = soup.find("tlight", class_="pv-text-details__left-panel mt2")
     if address is not None:
         address = address.text
-        logger.info("Found address: %", address)
+        logger.info("Found address: %s", address)
     else:
-      address = input("Enter your preferred location:")
+      address = input("Enter your preferred location: ")
+      print (address)
 
     # Get professional summary:
 
@@ -80,6 +84,7 @@ def get_linkedin_data(linkedin_url):
         logger.info("Found professional summary: %s", headline)
     else:
       headline = None
+      print (headline, , "LinkedIn headline")
 
     # Get core competencies
 
@@ -87,6 +92,8 @@ def get_linkedin_data(linkedin_url):
         skill.text for skill in soup.find_all("li", class_="pv-skills-section__skill-item")
     ]
     logger.info("Found skills: %s", data["skills"])
+    print(data["skills"], "LinkedIn skills")
+
 # each skills is in "liClass", class_="artdeco-list__item pvs-list__item--line-separated pvs-list__item--one-column"
 
     # Get education.
@@ -109,6 +116,7 @@ def get_linkedin_data(linkedin_url):
             "year_graduated": year_graduated,
         })
         logger.info("Found education: %s", data["education"])
+        print(data["education"], "LinkedIn education")
 
     # Get work experience.
 
@@ -132,17 +140,19 @@ def get_linkedin_data(linkedin_url):
             "description": description,
         })
         logger.info("Found work experience: %s", data["experience"])
+        print(data["experience"], "LinkedIn experience")
 
 
 # get query_controls
 
     salary = input("Enter your desired salary: ")
     benefits = input("Enter your desired benefits: ")
-    years_of_experience = input("Enter your desired years of experience: ")
+    years_of_experience = input("Optional: Enter your search parameters for years of experience: ")
     data["salary"] = salary
     data["benefits"] = benefits
     data["years_of_experience"] = years_of_experience
     logger.info("Successfully scraped data from LinkedIn profile")
+    print("Expeted salary is ", salary, "Positions should have these benefits ", benefits, " Job should not exceed ", years_of_experience, " years of experience.")
 
     return data
     print("Successfully scraped ", data, " from your LinkedIn profile")
