@@ -7,7 +7,7 @@ import os
 import logging
 
 
-    logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 def get_linkedin_data(linkedin_url):
     """Returns a dictionary of data from the LinkedIn URL."""
@@ -43,29 +43,33 @@ def get_linkedin_data(linkedin_url):
     tblack = soup.find(
         "tblack", class_="text-body-small inline t-black--light break-words")
     phone_number = soup.find("tblack", class_="t-14 t-black t-normal")
-    if phone_number is None:
+    if phone_number is not None:
         phone_number = phone_number.text
         logger.info("Found phone number: %s", phone_number)
-	else:
-        phone_number = input("Enter your phone number: ")
-    #   data["phone_number"] = phone_number
+	# else:
+    #     phone_number = input("Enter your phone number: ")
+
 
     # email
     pv = soup.find(
         "a", class_="pv-contact-info__contact-link link-without-visited-state t-14")
-    email = soup.find("pv", class_="pv-contact-info__ci-container t-14")
-    if email is None:
-		email = email.text
+    email = soup.find("pv", class_="pv-contact-info__ci-container t-14")	
+    if email is not None:
+        email = email.text
         logger.info("Found email address: %s", email)
-	else
-      email = input("Enter your email address: ")
-    #   data["email"] = email
+	# else
+    #   email = input("Enter your email address: ")
+
 
     # address
     tlight = soup.find(
         "tlight", class_="text-body-small inline t-black--light break-words")
     address = soup.find("tlight", class_="pv-text-details__left-panel mt2")
-	# Need to add in old if/else command
+    if address is not None:
+        address = address.text
+        logger.info("Found address: %", address)
+	# else:
+	#   address = input("Enter your preferred location")
 
     # Get professional summary:
 
