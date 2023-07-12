@@ -9,6 +9,7 @@ import os
 def get_linkedin_data(linkedin_url):
     """Returns a dictionary of data from the LinkedIn URL."""
 
+	logger = logging.getLogger(__name__)
     # Get the LinkedIn URL from the user.
 
     linkedin_url = input("Enter your LinkedIn URL: ")
@@ -123,6 +124,7 @@ def get_linkedin_data(linkedin_url):
     data["years_of_experience"] = years_of_experience
 
     return data
+	print("Successfully scraped " data " from your LinkedIn profile")
 
 
 def save_data_as_json(data):
@@ -138,4 +140,5 @@ def save_data_as_json(data):
 
 if __name__ == "__main__":
   data = get_linkedin_data()
+  data_as_json = json.dumps(data, default=dict)
   save_data_as_json(data)
